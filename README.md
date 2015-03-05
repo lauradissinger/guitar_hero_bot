@@ -9,6 +9,7 @@ I have referenced both this instructable (http://www.instructables.com/id/Guitar
 and also Rock Bots (which recently went down, but if it ever comes back up, it was here: http://www.rock-bots.com/RockBot-System/Guitar-Hero-Guitar/Page1.aspx.html).
 
 Initial thoughts for data file format:
+```
 # Define frames per second of the data file
 fps:30
 # Comment line, can be used for section names, like "Chorus 1"
@@ -18,3 +19,4 @@ fps:30
 # a strum (to support hammer ons / pull offs)
 10,--YB--
 4,-R-B-S
+```
