@@ -1,13 +1,14 @@
 ﻿<Window x:Class="Guitar_Hero_Bot_PC_App.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="326.119" Width="698.134">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="520,94,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="548,173,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="23,38,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="65,144,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="548,219,0,0" VerticalAlignment="Top" Width="75"/>
+        xmlns:c="clr-namespace:Guitar_Hero_Bot_PC_App"
+        Title="MainWindow" Height="190.919" Width="548.534">
+    <Grid x:Name="MainGrid">
+        <Button Content="Load File" HorizontalAlignment="Left" Margin="443,10,0,0" VerticalAlignment="Top" Width="89" Click="Click_Load_File"/>
+        <Button Content="Parse File" HorizontalAlignment="Left" Margin="443,45,0,0" VerticalAlignment="Top" Width="89"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding FileText}" VerticalAlignment="Top" Width="420"/>
+        <TextBox HorizontalAlignment="Left" Height="90" Margin="10,60,0,0" TextWrapping="Wrap" Text="{Binding StatusText}" VerticalAlignment="Top" Width="420"/>
+        <Button Content="Start Playback" HorizontalAlignment="Left" Margin="443,131,0,0" VerticalAlignment="Top" Width="89"/>
 
     </Grid>
 </Window>

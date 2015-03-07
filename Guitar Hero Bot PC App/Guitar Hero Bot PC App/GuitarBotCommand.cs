@@ -10,7 +10,7 @@ namespace Guitar_Hero_Bot_PC_App
     {
         public GuitarBotCommand()
         {
-            m_nMillisecondDelay = 0;
+            m_dMillisecondDelay = 0;
             m_bGreenActive = false;
             m_bRedActive = false;
             m_bYellowActive = false;
@@ -20,7 +20,7 @@ namespace Guitar_Hero_Bot_PC_App
         }
 
         // How many milliseconds to delay before executing this command
-        public int m_nMillisecondDelay;
+        public double m_dMillisecondDelay;
 
         public bool m_bGreenActive;
         public bool m_bRedActive;

@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,6 +24,25 @@ namespace Guitar_Hero_Bot_PC_App
         public MainWindow()
         {
             InitializeComponent();
+            fileParser = new DataFileParser();
+            controller = new GuitarBotAppController();
+
+            this.MainGrid.DataContext = controller;
         }
+
+        private void Click_Load_File(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = "C:\\";
+            openFileDialog.Filter = "GHB Data files (*.ghbd)|*.ghbd|All files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                controller.FileText = openFileDialog.FileName;
+            }
+        }
+
+        private GuitarBotAppController controller;
+        private DataFileParser fileParser;
     }
 }

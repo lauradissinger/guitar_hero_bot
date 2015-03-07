@@ -8,9 +8,11 @@ namespace Guitar_Hero_Bot_PC_App
 {
     class DataFileParser
     {
-        public DataFileParser(string sFileName)
+        public void Init(string sFileName)
         {
+            m_qBotCommands = new Queue<GuitarBotCommand>();
             m_sFileName = sFileName;
+            m_sStatus = "";
         }
 
         public bool ParseDataFile()
@@ -112,7 +114,7 @@ namespace Guitar_Hero_Bot_PC_App
                 }
 
                 var BotCommand = new GuitarBotCommand();
-                BotCommand.m_nMillisecondDelay = (int)((double)nFrames * m_dMillisecondsPerFrame);
+                BotCommand.m_dMillisecondDelay = (double)nFrames * m_dMillisecondsPerFrame;
 
                 if (parts[1].ElementAt(0) == 'G')
                 {
@@ -143,6 +145,11 @@ namespace Guitar_Hero_Bot_PC_App
             }
 
             return true;
+        }
+
+        public string GetErrorStatus()
+        {
+            return m_sStatus;
         }
 
         private string m_sFileName;
