@@ -33,34 +33,43 @@ namespace Guitar_Hero_Bot_PC_App
                     System.Threading.Thread.Sleep((int)command.m_dMillisecondDelay);
                 }
 
-                string sOutput = "";
-                if (command.m_bGreenActive)
-                    sOutput += " G ";
-                else
-                    sOutput += "   ";
-
-                if (command.m_bRedActive)
-                    sOutput += " R ";
-                else
-                    sOutput += "   ";
-
-                if (command.m_bYellowActive)
-                    sOutput += " Y ";
-                else
-                    sOutput += "   ";
-
-                if (command.m_bBlueActive)
-                    sOutput += " B ";
-                else
-                    sOutput += "   ";
-
-                if (command.m_bOrangeActive)
-                    sOutput += " O ";
-                else
-                    sOutput += "   ";
+                string sOutput = GenerateStatusForCommand(command);
 
                 m_controller.StatusText = sOutput;
+
+                if (command.m_bDoStrum)
+                {
+                    m_controller.StatusText += "\nSTRUM";
+                    if (m_qBotCommands.Count() > 0)
+                        m_qBotCommands.ElementAt(0).m_dMillisecondDelay -= m_dMillisecondsForStrum;
+
+                    System.Threading.Thread.Sleep((int)m_dMillisecondsForStrum);
+                    m_controller.StatusText = sOutput;
+                }
+
             }
+        }
+
+        private string GenerateStatusForCommand(GuitarBotCommand command)
+        {
+            string sStatusText = "";
+            sStatusText = AddFretButton(command.m_bGreenActive, 'G', sStatusText);
+            sStatusText = AddFretButton(command.m_bRedActive, 'R', sStatusText);
+            sStatusText = AddFretButton(command.m_bYellowActive, 'Y', sStatusText);
+            sStatusText = AddFretButton(command.m_bBlueActive, 'B', sStatusText);
+            sStatusText = AddFretButton(command.m_bOrangeActive, 'O', sStatusText);
+
+            return sStatusText;
+        }
+
+        private string AddFretButton(bool bButton, char cLetter, string sStatusString)
+        {
+            if (bButton)
+                sStatusString += " " + cLetter + " ";
+            else
+                sStatusString += "   ";
+
+            return sStatusString;
         }
 
         private MethodDelegate m_methodDelegate;
@@ -68,5 +77,6 @@ namespace Guitar_Hero_Bot_PC_App
         private Queue<GuitarBotCommand> m_qBotCommands;
         private double m_dMillisecondsPerFrame;
         private GuitarBotAppController m_controller;
+        private const double m_dMillisecondsForStrum = 25.0; // (1 frame is 33.33ms at 30 fps)
     }
 }
