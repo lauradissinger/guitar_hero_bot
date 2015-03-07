@@ -40,6 +40,9 @@ namespace Guitar_Hero_Bot_PC_App
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 controller.FileText = openFileDialog.FileName;
+                this.ParseButton.IsEnabled = true;
+                this.ConnectButton.IsEnabled = false;
+                this.StartButton.IsEnabled = false;
             }
         }
 
@@ -53,6 +56,7 @@ namespace Guitar_Hero_Bot_PC_App
             else
             {
                 controller.StatusText = "Successfully parsed file.";
+                this.ConnectButton.IsEnabled = true;
             }
         }
 

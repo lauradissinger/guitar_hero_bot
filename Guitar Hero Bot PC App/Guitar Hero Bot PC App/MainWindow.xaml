@@ -4,11 +4,12 @@
         xmlns:c="clr-namespace:Guitar_Hero_Bot_PC_App"
         Title="MainWindow" Height="190.919" Width="548.534">
     <Grid x:Name="MainGrid">
-        <Button Content="Load File" HorizontalAlignment="Left" Margin="443,10,0,0" VerticalAlignment="Top" Width="89" Click="Click_Load_File"/>
-        <Button Content="Parse File" HorizontalAlignment="Left" Margin="443,45,0,0" VerticalAlignment="Top" Width="89" Click="Click_Parse_File"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding FileText}" VerticalAlignment="Top" Width="420" IsEnabled="False"/>
         <TextBox HorizontalAlignment="Left" Height="90" Margin="10,60,0,0" TextWrapping="Wrap" Text="{Binding StatusText}" VerticalAlignment="Top" Width="420" IsEnabled="False"/>
-        <Button Content="Start Playback" HorizontalAlignment="Left" Margin="443,131,0,0" VerticalAlignment="Top" Width="89"/>
+        <Button x:Name="LoadButton" Content="Load File" HorizontalAlignment="Left" Margin="443,10,0,0" VerticalAlignment="Top" Width="89" Click="Click_Load_File"/>
+        <Button x:Name="ParseButton"  IsEnabled="False"  Content="Parse File" HorizontalAlignment="Left" Margin="443,48,0,0" VerticalAlignment="Top" Width="89" Click="Click_Parse_File"/>
+        <Button x:Name="ConnectButton"  IsEnabled="False" Content="Connect" HorizontalAlignment="Left" Margin="443,88,0,0" VerticalAlignment="Top" Width="89"/>
+        <Button x:Name="StartButton"  IsEnabled="False" Content="Start Playback" HorizontalAlignment="Left" Margin="443,131,0,0" VerticalAlignment="Top" Width="89"/>
 
     </Grid>
 </Window>
