@@ -5,9 +5,9 @@
         Title="MainWindow" Height="190.919" Width="548.534">
     <Grid x:Name="MainGrid">
         <Button Content="Load File" HorizontalAlignment="Left" Margin="443,10,0,0" VerticalAlignment="Top" Width="89" Click="Click_Load_File"/>
-        <Button Content="Parse File" HorizontalAlignment="Left" Margin="443,45,0,0" VerticalAlignment="Top" Width="89"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding FileText}" VerticalAlignment="Top" Width="420"/>
-        <TextBox HorizontalAlignment="Left" Height="90" Margin="10,60,0,0" TextWrapping="Wrap" Text="{Binding StatusText}" VerticalAlignment="Top" Width="420"/>
+        <Button Content="Parse File" HorizontalAlignment="Left" Margin="443,45,0,0" VerticalAlignment="Top" Width="89" Click="Click_Parse_File"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding FileText}" VerticalAlignment="Top" Width="420" IsEnabled="False"/>
+        <TextBox HorizontalAlignment="Left" Height="90" Margin="10,60,0,0" TextWrapping="Wrap" Text="{Binding StatusText}" VerticalAlignment="Top" Width="420" IsEnabled="False"/>
         <Button Content="Start Playback" HorizontalAlignment="Left" Margin="443,131,0,0" VerticalAlignment="Top" Width="89"/>
 
     </Grid>

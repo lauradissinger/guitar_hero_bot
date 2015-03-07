@@ -35,10 +35,24 @@ namespace Guitar_Hero_Bot_PC_App
             var openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = "C:\\";
             openFileDialog.Filter = "GHB Data files (*.ghbd)|*.ghbd|All files (*.*)|*.*";
+            openFileDialog.RestoreDirectory = true;
 
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 controller.FileText = openFileDialog.FileName;
+            }
+        }
+
+        private void Click_Parse_File(object sender, RoutedEventArgs e)
+        {
+            fileParser.Init(controller.FileText);
+            if (!fileParser.ParseDataFile())
+            {
+                controller.StatusText = fileParser.GetErrorStatus();
+            }
+            else
+            {
+                controller.StatusText = "Successfully parsed file.";
             }
         }
 
