@@ -13,6 +13,8 @@ namespace Guitar_Hero_Bot_PC_App
             m_qBotCommands = new Queue<GuitarBotCommand>();
             m_sFileName = sFileName;
             m_sStatus = "";
+            m_nFramesPerSecond = 0;
+            m_dMillisecondsPerFrame = 0;
         }
 
         public bool ParseDataFile()
@@ -24,7 +26,7 @@ namespace Guitar_Hero_Bot_PC_App
                 string sLine;
                 while ((sLine = oFile.ReadLine()) != null)
                 {
-                    if (ParseDataLine(sLine))
+                    if (!ParseDataLine(sLine))
                     {
                         // Status error set
                         return false;
