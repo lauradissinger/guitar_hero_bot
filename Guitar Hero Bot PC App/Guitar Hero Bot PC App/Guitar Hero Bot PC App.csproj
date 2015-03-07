@@ -65,6 +65,7 @@
     <Compile Include="DataFileParser.cs" />
     <Compile Include="GuitarBotAppController.cs" />
     <Compile Include="GuitarBotCommand.cs" />
+    <Compile Include="GuitarBotPlayer.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

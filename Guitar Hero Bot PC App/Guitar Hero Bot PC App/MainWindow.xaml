@@ -8,8 +8,8 @@
         <TextBox HorizontalAlignment="Left" Height="90" Margin="10,60,0,0" TextWrapping="Wrap" Text="{Binding StatusText}" VerticalAlignment="Top" Width="420" IsEnabled="False"/>
         <Button x:Name="LoadButton" Content="Load File" HorizontalAlignment="Left" Margin="443,10,0,0" VerticalAlignment="Top" Width="89" Click="Click_Load_File"/>
         <Button x:Name="ParseButton"  IsEnabled="False"  Content="Parse File" HorizontalAlignment="Left" Margin="443,48,0,0" VerticalAlignment="Top" Width="89" Click="Click_Parse_File"/>
-        <Button x:Name="ConnectButton"  IsEnabled="False" Content="Connect" HorizontalAlignment="Left" Margin="443,88,0,0" VerticalAlignment="Top" Width="89"/>
-        <Button x:Name="StartButton"  IsEnabled="False" Content="Start Playback" HorizontalAlignment="Left" Margin="443,131,0,0" VerticalAlignment="Top" Width="89"/>
+        <Button x:Name="ConnectButton"  IsEnabled="False" Content="Connect" HorizontalAlignment="Left" Margin="443,88,0,0" VerticalAlignment="Top" Width="89" Click="ConnectButton_Click"/>
+        <Button x:Name="StartButton"  IsEnabled="False" Content="Start Playback" HorizontalAlignment="Left" Margin="443,131,0,0" VerticalAlignment="Top" Width="89" Click="StartButton_Click"/>
 
     </Grid>
 </Window>

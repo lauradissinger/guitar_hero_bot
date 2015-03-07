@@ -154,6 +154,21 @@ namespace Guitar_Hero_Bot_PC_App
             return m_sStatus;
         }
 
+        public bool GetParsedData(out double dMillisecondsPerFrame, out Queue<GuitarBotCommand> qBotCommands)
+        {
+            if (m_nFramesPerSecond == 0)
+            {
+                dMillisecondsPerFrame = 0;
+                qBotCommands = new Queue<GuitarBotCommand>();
+                return false;
+            }
+
+            dMillisecondsPerFrame = m_dMillisecondsPerFrame;
+            qBotCommands = m_qBotCommands;
+
+            return true;
+        }
+
         private string m_sFileName;
         private string m_sStatus;
         private int m_nFramesPerSecond;

@@ -26,6 +26,7 @@ namespace Guitar_Hero_Bot_PC_App
             InitializeComponent();
             fileParser = new DataFileParser();
             controller = new GuitarBotAppController();
+            player = new GuitarBotPlayer();
 
             this.MainGrid.DataContext = controller;
         }
@@ -60,7 +61,19 @@ namespace Guitar_Hero_Bot_PC_App
             }
         }
 
+        private void ConnectButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.StartButton.IsEnabled = true;
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            player.Initialize(fileParser, controller);
+            player.StartPlayback();
+        }
+
         private GuitarBotAppController controller;
         private DataFileParser fileParser;
+        private GuitarBotPlayer player;
     }
 }
