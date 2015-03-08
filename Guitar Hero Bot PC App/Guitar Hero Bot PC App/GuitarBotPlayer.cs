@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,14 +25,24 @@ namespace Guitar_Hero_Bot_PC_App
 
         private void DoPlayback()
         {
+            bool bPreviousStrum = false;
+            Stopwatch SongTimer = Stopwatch.StartNew();
+            SongTimer.Reset();
             while (m_qBotCommands.Count() > 0)
             {
                 GuitarBotCommand command = m_qBotCommands.Dequeue();
 
                 if (command.m_dMillisecondDelay > 0)
                 {
-                    System.Threading.Thread.Sleep((int)command.m_dMillisecondDelay);
+                    // Compensate for time taken to run other stuff on the computer
+                    int nMillisecondCompensate = (int)(SongTimer.ElapsedMilliseconds);
+                    if (bPreviousStrum) nMillisecondCompensate -= (int)(m_dMillisecondsForStrum);
+                    System.Threading.Thread.Sleep(((int)command.m_dMillisecondDelay) - nMillisecondCompensate);
                 }
+
+                bPreviousStrum = false;
+                SongTimer.Reset();
+                SongTimer.Start();
 
                 string sOutput = GenerateStatusForCommand(command);
 
@@ -39,6 +50,7 @@ namespace Guitar_Hero_Bot_PC_App
 
                 if (command.m_bDoStrum)
                 {
+                    bPreviousStrum = true;
                     m_controller.StatusText += "\nSTRUM";
                     if (m_qBotCommands.Count() > 0)
                         m_qBotCommands.ElementAt(0).m_dMillisecondDelay -= m_dMillisecondsForStrum;
@@ -48,6 +60,8 @@ namespace Guitar_Hero_Bot_PC_App
                 }
 
             }
+
+            SongTimer.Reset();
         }
 
         private string GenerateStatusForCommand(GuitarBotCommand command)
