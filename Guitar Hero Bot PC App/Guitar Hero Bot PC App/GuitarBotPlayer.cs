@@ -25,7 +25,6 @@ namespace Guitar_Hero_Bot_PC_App
 
         private void DoPlayback()
         {
-            bool bPreviousStrum = false;
             Stopwatch SongTimer = Stopwatch.StartNew();
             SongTimer.Reset();
             while (m_qBotCommands.Count() > 0)
@@ -36,11 +35,9 @@ namespace Guitar_Hero_Bot_PC_App
                 {
                     // Compensate for time taken to run other stuff on the computer
                     int nMillisecondCompensate = (int)(SongTimer.ElapsedMilliseconds);
-                    if (bPreviousStrum) nMillisecondCompensate -= (int)(m_dMillisecondsForStrum);
                     System.Threading.Thread.Sleep(((int)command.m_dMillisecondDelay) - nMillisecondCompensate);
                 }
 
-                bPreviousStrum = false;
                 SongTimer.Reset();
                 SongTimer.Start();
 
@@ -50,11 +47,7 @@ namespace Guitar_Hero_Bot_PC_App
 
                 if (command.m_bDoStrum)
                 {
-                    bPreviousStrum = true;
                     m_controller.StatusText += "\nSTRUM";
-                    if (m_qBotCommands.Count() > 0)
-                        m_qBotCommands.ElementAt(0).m_dMillisecondDelay -= m_dMillisecondsForStrum;
-
                     System.Threading.Thread.Sleep((int)m_dMillisecondsForStrum);
                     m_controller.StatusText = sOutput;
                 }
